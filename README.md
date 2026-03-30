@@ -49,6 +49,33 @@
 - Purple Sys 中已经存在 daily、project log、idea log、weekly、monthly 等分层结构
 - 汇总工作默认依赖模板、既有命名约定和 `inbox` / `linked` 等状态约定
 
+### `purple-action-board`
+
+面向 Purple Sys 的行动判断层 skill，主要用于：
+
+- 基于 daily、weekly、project logs、student logs 和 meeting/material notes 生成或更新 AI 行动面板
+- 判断当前更该推进什么、哪些线程处于等待条件、哪些事项可能已经完成
+- 识别长期未推进但仍重要的线程
+- 将结果写入固定页面 `00 Dashboard/AI 行动面板.md`
+
+这个 skill 不替代 `purple-skills`，而是在 periodic 工作流之上增加“行动判断层”：
+
+- `purple-skills` 负责 periodic 总结、daily 归档和 project 候选判断
+- `purple-action-board` 负责线程提取、状态判断和下一步行动排序
+
+核心特点：
+
+- 面板按“线程”而不是单条 bullet 组织
+- 默认不扫描整个 vault，而是分层读取近期变化和中期背景
+- 固定状态为 `推进中`、`等待条件`、`待确认完成`、`可忽略`
+- 用户的判断默认写回行动面板本身，便于后续持续更新
+
+适用前提：
+
+- Purple Sys 中已经存在 project、student、admin 等长期 log 结构
+- 行动判断以既有 periodic notes 和 logs 为事实来源，而不是额外维护一套任务系统
+- 面板更新默认遵循 `references/board-contract.md` 的结构契约
+
 ## 目录结构
 
 ```text
@@ -66,6 +93,12 @@ my-skills/
 │   │   └── openai.yaml
 │   └── references/
 │       └── prompt-templates.md
+├── purple-action-board/
+│   ├── SKILL.md
+│   ├── agents/
+│   │   └── openai.yaml
+│   └── references/
+│       └── board-contract.md
 ├── .gitignore
 └── README.md
 ```
@@ -77,6 +110,7 @@ my-skills/
 - skill 的主说明放在各自的 `SKILL.md` 中。
 - 较长的模板、术语表、样例等内容放在 `references/` 中，避免把 `SKILL.md` 写得过长。
 - `agents/openai.yaml` 应与对应 skill 的定位保持一致。
+- Purple Sys 相关 skills 应尽量明确各自边界，避免 periodic 汇总和行动判断混在同一个 skill 中。
 
 ## 使用与迭代方向
 
