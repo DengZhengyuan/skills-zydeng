@@ -69,6 +69,8 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 当用户要求归档或重组 daily 内容时：
 
 - 只有在已存在对应 project 和 project log 时，才把 `今日项目推进` 中的 bullets 移入对应的 project log。
+- 当 daily 中出现学生相关沟通、进展或安排，但当前没有对应学生 log 时，先询问用户是否新建该学生 log，不要直接创建。
+- 如果用户同意新建学生 log，则必须从模板中的 student profile / `99 Template/Record/Student Log Template.md` 创建，再把当天对应内容归入新建的学生 log。
 - 把 `[Research]` ideas 移入 `log Research idea`。
 - 把 `[Skill]` ideas 移入 `log Skill idea`。
 - 把 `[Unsorted]` ideas 暂时留在 daily note 中，或转入待分类区。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Action Board"
+  short_description: "Purple Sys 的行动判断与被动任务面板 skill"
+  default_prompt: "使用 $purple-action-board 基于 Purple Sys 的 recent daily、weekly 和 logs 更新我的 AI 行动面板，判断我现在更该做什么、哪些事情在等待条件。"
