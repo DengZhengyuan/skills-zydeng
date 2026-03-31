@@ -1,13 +1,13 @@
 ---
-name: purple-skills
+name: purple-periodic
 description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 daily、weekly、monthly 周期笔记，处理 daily 到 project log 的归档、idea 的采集与转移，以及按分层来源而不是扫描整个 vault 的方式完成 weekly 和 monthly 汇总。
 ---
 
-# purple-skills
+# purple-periodic
 
 ## 概述
 
-`purple-skills` 用来维护 Purple Sys 的 periodic 工作流，控制 token 消耗，并把信息按层次组织起来。它把 daily note 视为原始输入，把 project log 视为项目长期主线，把分类 idea logs 视为 ideas 的长期沉淀层，把 weekly 视为第一层汇总，把 monthly 视为第二层汇总。
+`purple-periodic` 用来维护 Purple Sys 的 periodic 工作流，控制 token 消耗，并把信息按层次组织起来。它把 daily note 视为原始输入，把 project log 视为项目长期主线，把分类 idea logs 视为 ideas 的长期沉淀层，把 weekly 视为第一层汇总，把 monthly 视为第二层汇总。
 
 ## 核心规则
 

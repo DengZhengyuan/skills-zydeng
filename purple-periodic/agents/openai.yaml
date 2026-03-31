@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Periodic"
+  short_description: "Purple Sys 的 periodic 工作流 skill"
+  default_prompt: "使用 $purple-periodic 按 Purple Sys 的 daily notes、project logs、weekly summaries 和新增文档分层整理和总结周期笔记，而不是扫描整个 vault。"

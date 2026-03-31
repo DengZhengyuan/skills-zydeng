@@ -1,4 +1,0 @@
-interface:
-  display_name: "purple-skills"
-  short_description: "Purple Sys 的 periodic 工作流 skill"
-  default_prompt: "按 Purple Sys 的 daily notes、project logs、weekly summaries 和新增文档分层整理和总结周期笔记，而不是扫描整个 vault。"

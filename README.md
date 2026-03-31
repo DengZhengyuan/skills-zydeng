@@ -27,7 +27,9 @@
 - 术语统一
 - 依据用户提供样文进行风格控制
 
-### `purple-skills`
+## Purple Sys Skills
+
+### `purple-periodic`
 
 面向 Purple Sys 的 periodic 工作流 skill，主要用于：
 
@@ -58,9 +60,9 @@
 - 识别长期未推进但仍重要的线程
 - 将结果写入固定页面 `00 Dashboard/AI 行动面板.md`
 
-这个 skill 不替代 `purple-skills`，而是在 periodic 工作流之上增加“行动判断层”：
+这个 skill 不替代 `purple-periodic`，而是在 periodic 工作流之上增加“行动判断层”：
 
-- `purple-skills` 负责 periodic 总结、daily 归档和 project 候选判断
+- `purple-periodic` 负责 periodic 总结、daily 归档和 project 候选判断
 - `purple-action-board` 负责线程提取、状态判断和下一步行动排序
 
 核心特点：
@@ -87,7 +89,7 @@ my-skills/
 │   └── references/
 │       ├── style-samples.md
 │       └── terminology.md
-├── purple-skills/
+├── purple-periodic/
 │   ├── SKILL.md
 │   ├── agents/
 │   │   └── openai.yaml
