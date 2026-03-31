@@ -1,4 +1,4 @@
 interface:
   display_name: "Purple Action Board"
-  short_description: "Purple Sys 的行动判断与被动任务面板 skill"
-  default_prompt: "使用 $purple-action-board 基于 Purple Sys 的 recent daily、weekly 和 logs 更新我的 AI 行动面板，判断我现在更该做什么、哪些事情在等待条件。"
+  short_description: "Purple Sys 的行动判断与半被动线程面板 skill"
+  default_prompt: "使用 $purple-action-board 先读取已有 AI 行动面板，再基于上次面板后的增量内容、最近 14 天 periodic、最近 1 个月 weekly 与关键 logs 更新 `00 Dashboard/AI 行动面板.md`。按线程组织，必要时只就少量关键不确定线程或回捞出的遗忘事项向我提问，并整体重算覆盖面板。"

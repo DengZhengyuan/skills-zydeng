@@ -57,20 +57,29 @@
 
 - 基于 daily、weekly、project logs、student logs 和 meeting/material notes 生成或更新 AI 行动面板
 - 判断当前更该推进什么、哪些线程处于等待条件、哪些事项可能已经完成
-- 识别长期未推进但仍重要的线程
+- 在必要时回捞“曾被记录、后来沉下去、但可能仍值得重新判断”的事项
 - 将结果写入固定页面 `00 Dashboard/AI 行动面板.md`
 
-这个 skill 不替代 `purple-periodic`，而是在 periodic 工作流之上增加“行动判断层”：
+这个 skill 不替代 `purple-periodic`，而是在 periodic 工作流之上增加“被动 / 半被动”的行动判断层：
 
 - `purple-periodic` 负责 periodic 总结、daily 归档和 project 候选判断
-- `purple-action-board` 负责线程提取、状态判断和下一步行动排序
+- `purple-action-board` 负责线程提取、状态判断、沉底事项回捞和下一步行动排序
 
 核心特点：
 
 - 面板按“线程”而不是单条 bullet 组织
-- 默认不扫描整个 vault，而是分层读取近期变化和中期背景
+- 默认不扫描整个 vault，而是分层读取旧面板、近期增量、短期背景和中期背景
+- 默认整页重算覆盖，不做局部拼补
 - 固定状态为 `推进中`、`等待条件`、`待确认完成`、`可忽略`
 - 用户的判断默认写回行动面板本身，便于后续持续更新
+- 常规更新只围绕少量高不确定线程提问，不把更新过程变成大问卷
+
+行为边界：
+
+- 不接 TickTick
+- 不做主动提醒或定时催办
+- 不把 daily 中每个 bullet 直接转成待办
+- 不把行动面板写成待办清单或 daily 摘要
 
 适用前提：
 
@@ -120,4 +129,4 @@ my-skills/
 
 - 继续完善 `writing-master`
 - 继续扩展更多自定义 skills
-- 持续优化 README、examples 和 terminology
+- 持续优化 Purple Sys skills 的边界、入口 prompt 和 README
