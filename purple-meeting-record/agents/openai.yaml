@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Meeting Record"
+  short_description: "Purple Sys 的会议与沟通记录整理 skill"
+  default_prompt: "使用 $purple-meeting-record 把 transcript 先整理成可筛选的候选要点，再沉成一篇适合 Purple Sys 的 meeting note，并附 daily / log 回填草稿。"

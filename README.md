@@ -87,6 +87,34 @@
 - 行动判断以既有 periodic notes 和 logs 为事实来源，而不是额外维护一套任务系统
 - 面板更新默认遵循 `references/board-contract.md` 的结构契约
 
+### `purple-meeting-record`
+
+面向 Purple Sys 的沟通记录整理 skill，主要用于：
+
+- 把会议、电话、师生沟通和多人讨论的 transcript 文本整理成 Purple Sys 风格的正式 meeting note
+- 在正式落稿前，先生成可筛选的候选要点清单，便于用户按编号确认保留项
+- 在 speaker 标签缺失、错误或一人账号代表多人时，先做归属判断，再把高风险归属交给用户确认
+- 为 daily、student log、project log 生成可直接回填的高密度短条目，并在用户明确允许后自动写入对应位置
+
+这个 skill 的核心特点是“先筛选、再出完整稿、最后显式落库”，而不是直接把 transcript 改写成流水账：
+
+- 第一阶段先做降噪、元信息推断、speaker 归属判断和候选要点提取
+- 第二阶段基于用户确认过的保留项生成完整稿包
+- 第三阶段在用户明确说可以写入后，自动把 meeting note、daily 和相关既有 log 写回 Purple Sys
+
+行为边界：
+
+- 只处理 transcript 文本，不处理音频本体
+- 默认先给完整稿包，不直接写入 vault
+- 不自动新建 student log 或 project log
+- 不强行把未经确认的关键判断绑定到具体人名
+
+适用前提：
+
+- Purple Sys 中已经使用 `04 Record/` 维护单次 `meeting` 记录
+- 用户能提供 transcript txt 或粘贴转写文本
+- 用户愿意在必要时确认少量高价值元信息，例如模式、标题、日期或关键 speaker 归属
+
 ## 目录结构
 
 ```text
@@ -110,6 +138,12 @@ my-skills/
 │   │   └── openai.yaml
 │   └── references/
 │       └── board-contract.md
+├── purple-meeting-record/
+│   ├── SKILL.md
+│   ├── agents/
+│   │   └── openai.yaml
+│   └── references/
+│       └── output-contract.md
 ├── .gitignore
 └── README.md
 ```
