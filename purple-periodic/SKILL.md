@@ -49,20 +49,32 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 
 1. 先读取目标 monthly note 或 monthly template。
 2. 读取该月所有 weekly reviews。
-3. 用该月新增文档和关键更新过的 project logs 作为校验层。
-4. 额外检查本月仍处于 `inbox` 的 material / meeting，以及跨多个 weekly 反复出现的未归属主题。
-5. 只有在 weekly 缺失或明显不完整时，才回退去读原始 daily notes。
-6. 按章节综合整理。
+3. 用关键更新过的 project logs 作为校验层。
+4. 用该月新增文档作为轻量补漏层。
+5. 额外检查本月仍处于 `inbox` 的 material / meeting，以及跨多个 weekly 反复出现的未归属主题。
+6. 只有在 weekly 缺失或明显不完整时，才回退去读原始 daily notes。
+7. 先写 `本月核心结论`，再按月度主题归并。
 
 使用以下来源优先级：
 
+- `本月核心结论`：先从全部 weekly 中提炼 3-5 条月度判断，优先输出阶段变化、节点结果和 recurring issues。
+- `本月产出 / 节点成果`：优先看 weekly reviews，再用新增文档补关键材料、结果和阶段节点。
 - `本月推进的项目`：优先看 weekly reviews，再用关键 project logs 校验。
+- `本月学生与课题推进`：优先看 weekly reviews，必要时再查看相关 student logs。
 - `本月关键沟通 / 决策`：优先看 weekly reviews。
 - `本月学习 / 系统建设`：优先看 weekly reviews。
-- `本月形成的想法 / 线索`：优先看 weekly reviews，必要时再查看 daily 中的 idea。
+- `本月形成的想法 / 线索`：优先看 weekly reviews，必要时再查看 daily 中的 idea 或 idea logs。
 - `本月反复出现的问题 / 阻塞`：从 weekly 中重复出现的阻塞和 recurring friction 推断。
-- `下月重点方向`：从月内尚未解决的问题和最强的活跃项目线程中推导。
+- `下月重点方向`：从前文的阻塞、项目动量、学生推进和阶段判断中自然推导。
 - `是否需要新建 project`：只做候选判断，不直接创建。优先看跨周重复出现的 inbox 主题簇。
+
+Monthly 输出时必须遵守：
+
+- 先写 `本月核心结论`，不能直接从项目板块开始。
+- 不按周顺序复述 weekly，而是按月重组。
+- `本月产出 / 节点成果` 只列关键成果，不做文件目录。
+- `本月学生与课题推进` 独立组织，不并入项目板块。
+- `下月重点方向` 必须由前文自然推出，不能重新发散。
 
 ## Daily 归档规则
 
