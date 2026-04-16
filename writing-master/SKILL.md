@@ -82,7 +82,9 @@ Not allowed:
 
 ## Style standard
 
-The highest-priority style reference is `references/style-samples.md`.
+The highest-priority style references are:
+- `references/style-samples.md`
+- `references/style-samples-simulation.md`
 
 Learn from it at multiple levels:
 - wording
@@ -93,7 +95,9 @@ Learn from it at multiple levels:
 - emphasis
 - rhetorical restraint
 
-Do not imitate only vocabulary choices. Internalize the writing logic demonstrated by the expert-revised exemplar.
+Treat these two files as co-equal authoritative exemplars. When they align, internalize their shared writing logic. When local phrasing differs, prefer scientific fidelity, natural English academic logic, and terminology stability over mechanical imitation of either sample.
+
+Do not imitate only vocabulary choices. Internalize the writing logic demonstrated by the expert-revised exemplars.
 
 ## Writing quality requirements
 
@@ -122,7 +126,7 @@ When terminology is sensitive or repeated across a project, consult `references/
 
 When principles compete, follow this order:
 1. preserve scientific meaning and technical accuracy
-2. produce natural English academic logic consistent with the master style
+2. produce natural English academic logic consistent with the authoritative exemplars
 3. maintain terminology precision and consistency
 4. preserve original wording or sentence structure where possible
 
@@ -133,7 +137,7 @@ By default:
 - preserve structure when the draft is already clear
 - restructure when needed to achieve natural English academic logic
 - avoid unnecessary expansion
-- follow the master style and reference materials
+- follow the authoritative exemplars and reference materials
 - return only the final polished English text
 
 Add explanations, alternatives, or change logs only when the user explicitly asks for them.

@@ -1,4 +1,4 @@
 interface:
   display_name: "Writing Master"
-  short_description: "Field-specific academic rewriting anchored to the user's exemplar style"
-  default_prompt: "Use $writing-master to turn my Chinese, English, or mixed technical draft into publication-ready academic English for fluidization and simulation research, preserving scientific meaning, terminology consistency, and the user's master-style exemplar."
+  short_description: "Field-specific academic rewriting anchored to the user's authoritative exemplars"
+  default_prompt: "Use $writing-master to turn my Chinese, English, or mixed technical draft into publication-ready academic English for fluidization and simulation research, preserving scientific meaning, terminology consistency, and the user's master-style exemplars."

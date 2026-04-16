@@ -1,10 +1,13 @@
 # Master Style Samples
 
-This file stores the user's authoritative writing exemplar.
+This file stores one of the user's two co-equal authoritative writing exemplars.
+
+The companion simulation-focused exemplar is `references/style-samples-simulation.md`.
 
 ## Usage
 
-- Treat the exemplar as the highest-priority style standard.
+- Treat this exemplar and `references/style-samples-simulation.md` as parallel highest-priority style standards.
+- Use this file mainly for disciplinary positioning, scope framing, applications, and preface-style explanatory prose.
 - Use it to learn wording, sentence rhythm, tone, logical progression, and rhetorical control.
 - Never reuse its factual content in unrelated writing.
 - When the source draft is Chinese in logic but clear in meaning, rewrite toward this style while preserving scientific meaning.
