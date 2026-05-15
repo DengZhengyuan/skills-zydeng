@@ -13,11 +13,13 @@
 来源优先级如下：
 - 项目进展：project logs 优先
 - 沟通、学习、ideas、触发事项：daily notes 优先
+- `未来几天需要做的事情` 只作为未来 7 天短期承诺和优先级提示来源，不当作本周已发生事实
 - 新增 notes：只用于补漏
 
 另外，请额外检查：
 - 本周仍然处于 `inbox` 的 material / meeting
 - 本周 daily 中反复出现但尚未稳定归属的主题
+- 本周 `今日杂项 / 触发事项` 里仍未闭合的短期阻塞、节点性完成和待闭合小事
 
 如果发现已经形成稳定主题簇，请单独给出“project 候选建议”：
 - 说明候选 project 名称
@@ -26,6 +28,7 @@
 
 不要扫描整个 vault。
 不要把 daily 里的每条 bullet 原样复述。
+不要原样抄写 `未来几天需要做的事情`。
 请进行归纳总结，但也不要漏掉细节。
 把结果写入以下章节：
 - 本周推进的项目
@@ -58,6 +61,7 @@
 - 不要直接创建 project，先等用户确认
 
 只有在 weekly 缺失或明显不完整时，才回退去读原始 daily notes。
+即使回退 daily，也不要直接把 `未来几天需要做的事情` 当作月度事实来源。
 不要扫描整个 vault。
 先写 3-5 条 `本月核心结论`。
 不要按周顺序复述 weekly，要按月度主题重组。
@@ -89,6 +93,8 @@
 - 把 `[Research]` 的 idea bullets 移到 `log Research idea`
 - 把 `[Skill]` 的 idea bullets 移到 `log Skill idea`
 - 把 `[Unsorted]` 的 idea bullets 暂时保留在 daily note 中，或放入待分类区
+- `今日杂项 / 触发事项` 默认保留在 daily，作为短期事实输入，不自动升级成长期 log
+- `未来几天需要做的事情` 默认不移入 project log，只保留为未来 7 天短期承诺层
 - 只有在某个项目下的 ideas 已经持续积累时，才考虑建立项目专属 idea log
 - 对尚未形成稳定项目线的推进，不自动创建 project 或 log
 - 保留 daily note 作为当天原始痕迹，而不是完整项目历史

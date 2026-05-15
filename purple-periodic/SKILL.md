@@ -7,12 +7,12 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 
 ## 概述
 
-`purple-periodic` 用来维护 Purple Sys 的 periodic 工作流，控制 token 消耗，并把信息按层次组织起来。它把 daily note 视为原始输入，把 project log 视为项目长期主线，把分类 idea logs 视为 ideas 的长期沉淀层，把 weekly 视为第一层汇总，把 monthly 视为第二层汇总。
+`purple-periodic` 用来维护 Purple Sys 的 periodic 工作流，控制 token 消耗，并把信息按层次组织起来。它把 daily note 视为原始输入，把 project log 视为项目长期主线，把分类 idea logs 视为 ideas 的长期沉淀层，把 weekly 视为第一层汇总，把 monthly 视为第二层汇总。当前还默认区分 daily 里的“已发生事实”和“未来 7 天短期承诺”，避免把短期强调误写成事实层。
 
 ## 核心规则
 
 - 控制来源范围。除非用户明确要求做全量回溯，否则不要扫描整个 vault。
-- 把 daily note 作为沟通、学习、idea 和触发事项的主要来源。
+- 把 daily note 作为沟通、学习、idea、触发事项和短期承诺提示的主要来源，但要区分已发生事实与未来几天的强调。
 - 把 project log 作为 daily 内容归档后的项目进展事实来源。
 - 把 `Idea Collection` 下的分类 idea logs 作为 ideas 的长期沉淀来源。
 - 把新增文档视为轻量补漏层，而不是主要叙事来源。
@@ -31,6 +31,7 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 只读取该周明显有更新的 log，或在这一周 daily 中被链接到的 log。
 4. 读取该周新增的 project、material、record notes。
 5. 额外检查该周仍处于 `inbox` 的 material / meeting，以及 daily 中反复出现但尚未稳定归属的主题。
+同时读取 `未来几天需要做的事情` 作为短期承诺提示，但不把它们当作本周已发生事实。
 6. 按章节综合整理。
 
 使用以下来源优先级：
@@ -39,8 +40,8 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 - `本周关键沟通 / 决策`：优先看 daily notes。
 - `本周学习 / 系统建设`：优先看 daily notes。
 - `本周形成的想法 / 线索`：优先看 daily notes，尤其是 idea 栏。
-- `本周阻塞 / 待跟进事项`：由 daily 中的触发事项和 project log 中尚未闭合的状态综合判断。
-- `下周重点方向`：从本周的阻塞、未闭合线程和项目动量中推导。
+- `本周阻塞 / 待跟进事项`：由 `今日杂项 / 触发事项` 和 project log 中尚未闭合的状态综合判断。
+- `下周重点方向`：从本周的阻塞、未闭合线程、项目动量和 `未来几天需要做的事情` 中提炼，但不原样抄写短期承诺。
 - `是否需要新建 project`：只做候选判断，不直接创建。优先看反复出现的 inbox 主题簇。
 
 ## Monthly 复盘流程
@@ -55,6 +56,8 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 6. 只有在 weekly 缺失或明显不完整时，才回退去读原始 daily notes。
 7. 先写 `本月核心结论`，再按月度主题归并。
 
+默认不要直接把 daily 中的 `未来几天需要做的事情` 当作月度事实来源；月度层只继承 weekly 已经沉淀出的判断。
+
 使用以下来源优先级：
 
 - `本月核心结论`：先从全部 weekly 中提炼 3-5 条月度判断，优先输出阶段变化、节点结果和 recurring issues。
@@ -67,6 +70,8 @@ description: Purple Sys 的 periodic 工作流 skill。用于维护和总结 dai
 - `本月反复出现的问题 / 阻塞`：从 weekly 中重复出现的阻塞和 recurring friction 推断。
 - `下月重点方向`：从前文的阻塞、项目动量、学生推进和阶段判断中自然推导。
 - `是否需要新建 project`：只做候选判断，不直接创建。优先看跨周重复出现的 inbox 主题簇。
+
+即使 monthly 因 weekly 缺失而回退 daily，也不要直接把 `未来几天需要做的事情` 当作月度事实，只能把它视为当时的短期意图线索。
 
 Monthly 输出时必须遵守：
 
@@ -86,6 +91,8 @@ Monthly 输出时必须遵守：
 - 把 `[Research]` ideas 移入 `log Research idea`。
 - 把 `[Skill]` ideas 移入 `log Skill idea`。
 - 把 `[Unsorted]` ideas 暂时留在 daily note 中，或转入待分类区。
+- `今日杂项 / 触发事项` 默认保留在 daily 作为短期事实输入，不自动升级成长期 log。
+- `未来几天需要做的事情` 默认不移入 project log，只留给 weekly 和 action board 判断短期承诺。
 - 只有在某个项目下的 ideas 已经持续积累时，才考虑建立项目专属 idea log。
 - 对尚未形成稳定项目线的推进，不自动创建 project 或 log；必要时保留在 daily，或建议相关 material / meeting 继续保持 `inbox`。
 - 保留 daily note 作为当天原始痕迹，不要把它变成长期项目记录。

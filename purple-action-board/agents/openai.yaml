@@ -1,4 +1,4 @@
 interface:
   display_name: "Purple Action Board"
   short_description: "Purple Sys 的行动判断与半被动线程面板 skill"
-  default_prompt: "使用 $purple-action-board 先读取已有 AI 行动面板，再基于上次面板后的增量内容、最近 14 天 periodic、最近 1 个月 weekly 与关键 logs 更新 `00 Dashboard/AI 行动面板.md`。按线程组织，必要时只就少量关键不确定线程或回捞出的遗忘事项向我提问，并整体重算覆盖面板。"
+  default_prompt: "使用 $purple-action-board 先读取已有 `AI 行动面板`，包括每个 `### 项目/线程` 后紧跟的 `人工修正 / 交互输入`，再基于上次面板后的增量内容、最近 14 天 periodic、最近 1 个月 weekly 与关键 logs，以及 recent daily 中的 `未来几天需要做的事情` 和 `今日杂项 / 触发事项`，更新 `00 Dashboard/AI 行动面板.md`。短期动作进入 `未来7天承诺与待闭合小事`，不要把短期承诺误写成已发生事实，也不要给短期 bullet 单独挂输入块；吸收后的人工修正默认清掉，只有带 `#留摘要` 的才在摘要里留一句。若本次涉及学生沟通判断，再读取所有 `ongoing log-student`、相关 meeting note 与 student log 条目，更新 `00 Dashboard/学生沟通面板.md`。"
