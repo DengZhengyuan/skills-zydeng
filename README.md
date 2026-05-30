@@ -6,13 +6,15 @@
 
 ## 当前包含的 Skills
 
-目前共有 5 个 personal skills：
+目前共有 7 个 personal skills：
 
 - `writing-master`
 - `purple-periodic`
 - `purple-action-board`
 - `purple-meeting-record`
 - `meeting-press-release`
+- `lib-import`
+- `purple-doc-bridge`
 
 ## 最近更新要点
 
@@ -27,6 +29,8 @@
 - `purple-meeting-record` 已形成更稳定的四阶段整理流程，并显式区分 `全细节 / 详细 / 标准 / 极简` 四档压缩强度；学生沟通场景下会额外输出稳定的 `沟通形式 / 本次主要汇报 / 沟通建议 / 触发原因` 信号。
 - `purple-periodic` 继续强调分层来源、低扫描范围和 periodic 工作流边界，避免与行动判断层混用；当前会显式区分 daily 里的事实输入与未来 `7` 天短期承诺层。
 - 新增 `meeting-press-release`，用于根据会议日程、会议手册、会务资料、会后事实或已有初稿生成中文会议会后通稿，并在关键信息不足时先输出待补信息清单。
+- 新增 `lib-import`，用于把 PDF、MinerU 输出、论文、guide、manual 或 book 整理进 LibVault，并维护轻量元数据、图片引用、PDF 回链和阅读状态索引。
+- 新增 `purple-doc-bridge`，用于 Purple Sys Markdown 与 Word `.docx` 的双向转换；默认使用课题组 Word 模板、`pandoc`、`doc` skill 和 `~/uv_proj/env_office` 中的 `python-docx`。
 
 ## Skills 总览
 
@@ -135,6 +139,43 @@
 - 完整稿包固定包含 `标题候选`、`导语`、`正文` 和 `发布摘要`
 - 配套 `missing-info-checklist.md`、`style-modes.md`、`style-guide.md`、`output-contract.md` 和真实样稿目录
 
+### `lib-import`
+
+面向中文 LibVault 文献入库的 skill，主要用于：
+
+- 把 PDF 或 MinerU 输出整理进 LibVault
+- 识别 `paper`、`guide`、`manual`、`book` 或 `other` 等资料类型
+- 为论文生成轻量 frontmatter，并把 DOI、URL 和 Source PDF 放在正文 H1 下方
+- 为 guide、manual 和 book 按章节拆分并维护父级目录 note
+- 保留每个文档自己的 `images/` 文件夹和 MinerU 原生相对图片引用
+- 更新阅读状态索引，并在无法可靠识别元数据时保留 `待核对`
+
+核心特点：
+
+- 不写死 LibVault 绝对路径，默认通过 Obsidian 相关 skill 或当前上下文接入 vault
+- 不把 MinerU JSON、layout、span、middle、model 等中间文件作为正式条目导入
+- Paper frontmatter 保持轻量，不把 DOI、URL、Source PDF、abstract 等写入 frontmatter
+- guide、manual 和 book 默认按章节拆分，章节 note 与共享 `images/` 文件夹同级
+- 配套 `references/libvault-contract.md` 维护目录、字段、图片、索引和清理规则
+
+### `purple-doc-bridge`
+
+面向 Purple Sys 与 Word 文档之间的双向转换，主要用于：
+
+- 把 Purple Sys / Obsidian Markdown、Material 或 Record note 导出为 `.docx`
+- 按课题组 Word 模板生成可交付文档
+- 把 Word `.docx` 提取、整理并写入 Purple Sys `03 Material/`
+- 在导出前确认输出路径、模板、标题、目录和验证要求
+- 在导入前确认 Material 标题、类型、状态、项目归属、附件保留和 daily backlink
+
+核心特点：
+
+- 默认使用 `pandoc` 处理 Markdown / DOCX 转换
+- 默认模板资产放在 `assets/templates/gas-solid-fluidization-template.docx`
+- 使用 `scripts/export_md_to_docx.py` 清理 Obsidian Markdown 并生成 DOCX
+- 使用 `scripts/import_docx_to_material.py` 从 DOCX 生成 Purple Sys Material note
+- 写入 Purple Sys 前必须读取当前 `SYSTEM-CONVENTIONS.md` 和 Material 模板，不把字段契约写死
+
 ## Purple Sys 三个 Skills 的边界
 
 - `purple-periodic`
@@ -200,6 +241,22 @@ my-skills/
 │           ├── institutional-sample-01.md
 │           ├── institutional-sample-02.md
 │           └── media-sample-01.md
+├── lib-import/
+│   ├── SKILL.md
+│   └── references/
+│       └── libvault-contract.md
+├── purple-doc-bridge/
+│   ├── SKILL.md
+│   ├── agents/
+│   │   └── openai.yaml
+│   ├── assets/
+│   │   └── templates/
+│   │       └── gas-solid-fluidization-template.docx
+│   ├── references/
+│   │   └── template-registry.md
+│   └── scripts/
+│       ├── export_md_to_docx.py
+│       └── import_docx_to_material.py
 ├── .gitignore
 └── README.md
 ```
@@ -220,4 +277,6 @@ my-skills/
 - 继续完善 `writing-master` 的权威样文体系和术语控制
 - 继续压实 Purple Sys 三个 skills 的边界、入口 prompt 和 references 契约
 - 继续补齐 `meeting-press-release` 的真实样稿基准和机构 / 媒体风格差异
+- 继续完善 `lib-import` 的 LibVault 入库契约、MinerU 后处理和索引更新规则
+- 继续打磨 `purple-doc-bridge` 的模板库、DOCX 版式验证和 Word 到 Material 的字段映射
 - 在保持 skill 清晰分工的前提下，持续扩展更多自定义 skills
