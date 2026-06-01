@@ -6,7 +6,7 @@
 
 ## 当前包含的 Skills
 
-目前共有 7 个 personal skills：
+目前共有 8 个 personal skills：
 
 - `writing-master`
 - `purple-periodic`
@@ -14,6 +14,7 @@
 - `purple-meeting-record`
 - `meeting-press-release`
 - `lib-import`
+- `lib-AB`
 - `purple-doc-bridge`
 
 ## 最近更新要点
@@ -30,6 +31,7 @@
 - `purple-periodic` 继续强调分层来源、低扫描范围和 periodic 工作流边界，避免与行动判断层混用；当前会显式区分 daily 里的事实输入与未来 `7` 天短期承诺层。
 - 新增 `meeting-press-release`，用于根据会议日程、会议手册、会务资料、会后事实或已有初稿生成中文会议会后通稿，并在关键信息不足时先输出待补信息清单。
 - 新增 `lib-import`，用于把 PDF、MinerU 输出、论文、guide、manual 或 book 整理进 LibVault，并维护轻量元数据、图片引用、PDF 回链和阅读状态索引。
+- 新增 `lib-AB`，用于为 LibVault 中已入库 paper 生成和维护中文 annotated bibliography sidecar，并维护 AB Inbox 与 Collections。
 - 新增 `purple-doc-bridge`，用于 Purple Sys Markdown 与 Word `.docx` 的双向转换；默认使用课题组 Word 模板、`pandoc`、`doc` skill 和 `~/uv_proj/env_office` 中的 `python-docx`。
 
 ## Skills 总览
@@ -158,6 +160,23 @@
 - guide、manual 和 book 默认按章节拆分，章节 note 与共享 `images/` 文件夹同级
 - 配套 `references/libvault-contract.md` 维护目录、字段、图片、索引和清理规则
 
+### `lib-AB`
+
+面向 LibVault paper annotated bibliography 的 skill，主要用于：
+
+- 为已入库 paper 生成或更新 `AB - <paper-key>.md`
+- 生成中文约 200 字 AB，说明论文对用户可能有用的地方、方法、结论、可借鉴点或与已有工作的关系
+- 维护 AB frontmatter、正文链接、PDF link、关键词、单位和可选 note link
+- 维护 `04 Annotated Bibliography/Inbox.md`
+- 根据 `collections` 或用户指示，把 AB 嵌入到 collection 页面
+
+核心特点：
+
+- 与 `lib-import` 分工明确：`lib-import` 负责 PDF/MinerU/Markdown 入库，`lib-AB` 负责 paper 入库后的 AB 生成、更新和归档
+- 只处理 paper，不处理 guide/manual/book
+- 默认 `status: "待粗读"`，表示 AB 已生成但仍等待用户确认、点评或归档
+- 不自动创建 `note - <paper title>.md`；只有 note 已存在时才在 AB 中加入 `Notes` 块
+
 ### `purple-doc-bridge`
 
 面向 Purple Sys 与 Word 文档之间的双向转换，主要用于：
@@ -245,6 +264,8 @@ my-skills/
 │   ├── SKILL.md
 │   └── references/
 │       └── libvault-contract.md
+├── lib-AB/
+│   └── SKILL.md
 ├── purple-doc-bridge/
 │   ├── SKILL.md
 │   ├── agents/

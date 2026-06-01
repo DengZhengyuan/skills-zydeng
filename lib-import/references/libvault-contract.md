@@ -15,6 +15,8 @@ LibVault 至少包含以下目录层：
   Software/
   Topics/
   Reading Status/
+04 Annotated Bibliography/
+  Collections/
 ```
 
 日期分组规则：
@@ -29,6 +31,7 @@ LibVault 至少包含以下目录层：
 
 02 Paper Markdown/YYYY/YYYY-MM/YYYY-MM-DD/<doc-key>/
   <doc-key>.md
+  AB - <doc-key>.md
   images/
 ```
 
@@ -42,6 +45,8 @@ guide/manual/book 拆分后：
   <doc-key> - 002 <chapter-title>.md
   images/
 ```
+
+`AB - <doc-key>.md` 只用于 `paper`，由 `lib-AB` 生成或维护。guide/manual/book 暂不生成 AB。
 
 ## Paper frontmatter
 
@@ -67,6 +72,63 @@ topics: []
 - `topics` 只放稳定主题词，不放 DOI、venue、项目、软件或长摘要。
 
 不要把 `title`、`doi`、`url`、`source_pdf`、`abstract`、`venue`、`mineru_method`、`processed_date`、`ingest_date`、`projects`、`people`、`software`、`tags` 写入 paper frontmatter。
+
+## Paper Annotated Bibliography
+
+每篇 `paper` 入库后，必须引用 `lib-AB` 在同一 paper 文件夹中生成或更新一个独立 AB sidecar note：
+
+```text
+AB - <doc-key>.md
+```
+
+AB frontmatter 保持轻量：
+
+```yaml
+---
+type: annotated_bibliography
+authors: []
+venue: ""
+publish_year:
+status: "待粗读"
+collections: []
+created:
+updated:
+---
+```
+
+不要把 `title`、`paper_key`、`paper_note`、`keywords`、`affiliations`、`notes`、PDF link 写入 AB frontmatter。
+
+AB 正文固定结构：
+
+```markdown
+### <paper title>
+
+<中文约 200 字 annotated bibliography，重点写这篇文章对用户可能有用的地方、方法、结论、可借鉴点或与已有工作的关系。>
+
+- 点评：
+
+- Paper link: [[<doc-key>|<paper title>]]
+- PDF link: [[<pdf-file>.pdf]]
+- Keywords:
+	-
+- Affiliations:
+	-
+```
+
+如果同一 paper 文件夹中已经存在 `note - <paper title>.md`，在 `PDF link` 后加入可选块：
+
+```markdown
+- Notes:
+	- [[note - <paper title>]]
+```
+
+AB 状态只允许：
+
+- `待粗读`
+- `已粗读`
+- `已归档`
+
+默认写 `待粗读`。这里表示 AB 已生成但仍等待用户确认、点评或归档，不表示 AB 尚未写。
 
 ## Paper 正文链接
 
@@ -233,14 +295,34 @@ tags:
 
 不要在多个索引中复制完整 metadata。无法可靠判断项目、人员、软件或主题时，先不写对应索引。
 
+## Annotated Bibliography 汇总层
+
+AB 汇总目录：
+
+```text
+04 Annotated Bibliography/
+  Inbox.md
+  Collections/
+```
+
+`04 Annotated Bibliography/Inbox.md` 嵌入尚未归档或仍待用户处理的 paper AB note：
+
+```markdown
+![[AB - <doc-key>]]
+```
+
+`Collections/` 下的页面按课题、学生、项目或工作方向自由建立。同一篇 paper 的 AB 可以被多个 collection 页面嵌入，但不要复制 AB 正文。
+
 ## MinerU 正式导入范围
 
 正式 LibVault 只保留：
 
 - PDF 原件
 - 整理后的 Markdown
+- paper 的 `AB - <doc-key>.md`
 - 当前文档自己的 `images/`
 - 索引 note
+- `04 Annotated Bibliography/` 中的 AB 汇总页面
 
 不得作为正式条目导入：
 
@@ -274,6 +356,8 @@ tags:
 - Paper frontmatter 只包含 `type`、`authors`、`corresponding_author`、`publish_year`、`read_status`、`topics`。
 - Paper H1 title 下方有 DOI、URL 和 Source PDF。
 - Source PDF wikilink 可在 vault 中找到。
+- 对 `paper`，同文件夹存在 `AB - <doc-key>.md`，默认状态为 `待粗读`，并已嵌入 `04 Annotated Bibliography/Inbox.md`。
+- AB frontmatter 不包含 `title`、`paper_key`、`paper_note`、`keywords`、`affiliations`、`notes`。
 - 所有 `images/` 引用无断链。
 - 阅读状态索引已更新。
 - guide/manual/book 已拆分为父级 note 和章节 note。

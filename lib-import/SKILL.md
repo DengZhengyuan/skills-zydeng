@@ -1,6 +1,6 @@
 ---
 name: lib-import
-description: 中文 LibVault 文献入库 skill。用于把 PDF、MinerU 输出、论文、guide/manual/book 等资料整理进当前通过 Obsidian Skill 可访问的 LibVault；负责类型判断、MinerU 接入、章节拆分、论文元数据、阅读状态、图片引用、PDF 回链和索引维护。
+description: 中文 LibVault 文献入库 skill。用于把 PDF、MinerU 输出、论文、guide/manual/book 等资料整理进当前通过 Obsidian Skill 可访问的 LibVault；负责类型判断、MinerU 接入、章节拆分、论文元数据、阅读状态、图片引用、PDF 回链和索引维护，并在 paper 入库后引用 lib-AB 生成 AB sidecar。
 ---
 
 # lib-import
@@ -12,6 +12,8 @@ description: 中文 LibVault 文献入库 skill。用于把 PDF、MinerU 输出�
 使用时默认通过 Obsidian 相关 skill 或当前任务上下文接入 LibVault。只要当前环境能访问 LibVault，就按本 skill 执行；如果无法确认当前 vault 是 LibVault，先确认 vault 接入，不要硬猜路径。
 
 详细目录、frontmatter、正文链接、图片、索引和清理规则见 [references/libvault-contract.md](references/libvault-contract.md)。执行正式入库前必须读取该文件。
+
+对 `paper`，正式入库完成后默认进入 `lib-AB` 工作流：在 paper 文件夹内生成或更新 `AB - <paper-key>.md`，并嵌入 `04 Annotated Bibliography/Inbox.md`。guide/manual/book 不进入 AB 流程。
 
 ## 触发场景
 
@@ -31,6 +33,7 @@ description: 中文 LibVault 文献入库 skill。用于把 PDF、MinerU 输出�
 - 不把 MinerU JSON、layout、span、middle、model 等中间文件作为正式 LibVault 条目导入。
 - 不使用全局 attachments；图片保留在每个文档自己的 `images/` 文件夹中。
 - Paper frontmatter 保持轻量；DOI、URL、Source PDF 放在正文 H1 标题下方。
+- Paper 入库后默认引用 `lib-AB` 生成 AB sidecar；AB 不写入 paper frontmatter，不处理 guide/manual/book。
 - 不编造论文元数据。无法可靠识别的作者、通讯作者、发表年份、主题、DOI 或链接留空或写 `待核对`。
 - 不对用户已有的 MinerU 输出目录做删除操作，除非该目录明确是本次任务创建的临时工作区。
 
@@ -154,6 +157,12 @@ MinerU 可能把括号内 citation 错误拆成跨段落文本。对 `paper` 做
 
 索引 note 是引用面，不是重复数据库。优先写 wikilink 和短上下文，不复制大段 metadata。
 
+### 8. Paper AB
+
+对 `paper`，入库、图片检查和 PDF 回链完成后，按 `lib-AB` 规则生成或更新同文件夹的 `AB - <paper-key>.md`，默认 `status: "待粗读"`。若同文件夹已有 `note - <paper title>.md`，AB 中可以加入 `Notes` 块；否则不要强行创建或链接 note。
+
+guide/manual/book/other 不执行本步骤。
+
 ## MinerU 临时文件策略
 
 如果本次任务从 PDF 运行 MinerU：
@@ -176,6 +185,7 @@ MinerU 可能把括号内 citation 错误拆成跨段落文本。对 `paper` 做
 - Paper frontmatter 只包含 `type`、`authors`、`corresponding_author`、`publish_year`、`read_status`、`topics`。
 - `read_status` 是 `未读`、`正在读`、`已读` 之一。
 - 对 `paper`，DOI、URL、Source PDF 出现在 H1 标题下方，且 Source PDF wikilink 指向 vault 中的 PDF 原件。
+- 对 `paper`，已按 `lib-AB` 生成或更新 `AB - <paper-key>.md`，并嵌入 `04 Annotated Bibliography/Inbox.md`。
 - 所有 `![](images/...)` 引用能在当前文档文件夹的 `images/` 中找到。
 - 正式库中没有 MinerU 中间文件。
 - 对 guide/manual/book，父级 note 能链接到章节 note。
@@ -187,6 +197,7 @@ MinerU 可能把括号内 citation 错误拆成跨段落文本。对 `paper` 做
 
 - 入库类型：`paper`、`guide/manual/book` 或 `other`。
 - 生成或更新了哪些主要条目。
+- 对 `paper`，是否已生成或更新 AB sidecar。
 - 是否拆分章节。
 - 图片放置规则。
 - MinerU 临时输出是否已清理；若失败则给出保留位置和原因。
