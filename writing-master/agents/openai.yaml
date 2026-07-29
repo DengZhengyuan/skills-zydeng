@@ -1,4 +1,4 @@
 interface:
   display_name: "Writing Master"
-  short_description: "Field-specific academic rewriting anchored to the user's authoritative exemplars"
-  default_prompt: "Use $writing-master to turn my Chinese, English, or mixed technical draft into publication-ready academic English for fluidization and simulation research, preserving scientific meaning, terminology consistency, and the user's master-style exemplars."
+  short_description: "面向流态化与多相流研究的学术英语翻译、润色和内容重写"
+  default_prompt: "使用 $writing-master 按两份最高优先级样文润色或重写这段技术文本，并保持科学含义、术语、LaTeX 和 citations 不变。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Periodic"
+  short_description: "维护 Purple Sys daily、weekly 和 monthly 工作流"
+  default_prompt: "使用 $purple-periodic 按分层来源整理本次 daily、weekly、monthly 或归档任务，不扫描整个 vault。"

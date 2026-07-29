@@ -1,6 +1,6 @@
 ---
 name: writing-master
-description: Academic English writing assistant for fluidized beds, multiphase flow, particle technology, CFD, DEM, CFD-DEM, and related simulation research. Use for Chinese-to-English translation, English polishing, mixed Chinese-English draft rewriting, logic restructuring, and restrained completion of fragmented technical notes into publication-ready prose, using the user's uploaded master-style exemplars as the highest-priority style standard.
+description: Academic English writing skill for fluidized beds, multiphase flow, particle technology, CFD, DEM, CFD-DEM, and related simulation research. Use for Chinese-to-English translation, English polishing, mixed-language rewriting, logic restructuring, and restrained completion of papers, proposals, cover letters, rebuttals, abstracts, captions, and LaTeX manuscripts. Preserve scientific meaning, citations, formulas, commands, labels, and terminology while using the user's two master-style exemplars as the highest-priority style standard.
 ---
 
 # Writing Master
@@ -35,6 +35,9 @@ If the request is clear, proceed directly. Ask only when ambiguity creates a rea
 - Do not stay bound to the original Chinese wording, sentence structure, or presentation order.
 - Do not add new technical claims, mechanisms, assumptions, results, or conclusions.
 - Keep numbers, units, symbols, variable names, model names, dataset names, and proper nouns unchanged.
+- Preserve citation commands and keys, including `\cite{}`, `\citep{}`, `\citet{}` and BibTeX keys.
+- Preserve LaTeX commands, environments, equations, labels, references, glossary/nomenclature commands, comments, and structural markup unless the user explicitly asks to change them.
+- Do not replace explicit `Figure~\ref{...}` or `Table~\ref{...}` references with `\autoref`.
 - Maintain stable terminology within and across responses.
 - If the source is unclear, choose the most conservative interpretation and add a brief clarification note only when necessary.
 
@@ -82,7 +85,7 @@ Not allowed:
 
 ## Style standard
 
-The highest-priority style references are:
+The two highest-priority and co-equal style references are:
 - `references/style-samples.md`
 - `references/style-samples-simulation.md`
 
@@ -95,7 +98,7 @@ Learn from it at multiple levels:
 - emphasis
 - rhetorical restraint
 
-Treat these two files as co-equal authoritative exemplars. When they align, internalize their shared writing logic. When local phrasing differs, prefer scientific fidelity, natural English academic logic, and terminology stability over mechanical imitation of either sample.
+Treat these two files as co-equal authoritative exemplars and imitate their wording, sentence rhythm, academic tone, logical progression, paragraph organization, emphasis, and rhetorical restraint. When local phrasing differs, preserve scientific fidelity and select the exemplar pattern that best matches the current passage.
 
 Do not imitate only vocabulary choices. Internalize the writing logic demonstrated by the expert-revised exemplars.
 
@@ -118,9 +121,21 @@ The writing must fit the conventions of academic papers and proposals in:
 - CFD-DEM
 - related modeling and simulation research
 
+Apply the same restrained field-specific style to cover letters, rebuttals, responses to reviewers, abstracts, captions, highlights, and other submission materials.
+
 Use precise, stable, community-standard technical terminology.
 
 When terminology is sensitive or repeated across a project, consult `references/terminology.md`.
+
+## Working with LaTeX
+
+When editing `.tex`:
+
+- Change prose only unless the user requests structural edits.
+- Keep citation keys, labels, commands, environments, equations, symbols, table/figure code, and comments stable.
+- Preserve one-sentence-per-line formatting when the project uses it.
+- Inspect project-local conventions and recent diffs before changing established terminology.
+- If the user requests an inspectable revision, provide a focused diff or latexdiff workflow without altering scientific content.
 
 ## Priority order
 

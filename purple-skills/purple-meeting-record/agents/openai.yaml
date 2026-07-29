@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Meeting Record"
+  short_description: "分阶段整理并回填 Purple Sys 会议与沟通记录"
+  default_prompt: "使用 $purple-meeting-record 分阶段整理这份 transcript，在我确认完整稿并明确说写入后再落库和验证回链。"

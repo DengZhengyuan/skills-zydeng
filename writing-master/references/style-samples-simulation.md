@@ -1,5 +1,14 @@
 # Master Style Samples: Simulation Chapter
 
+## Contents
+
+- [Usage](#usage)
+- [Source note](#source-note)
+- [Cleaned bilingual sample](#cleaned-bilingual-sample)
+- [Gas-phase simulation methods](#91气相模拟方法)
+- [Particle-phase simulation methods](#92-颗粒相的模拟方法)
+- [Gas-solid interaction](#93-流体与颗粒间的相互作用和耦合方式)
+
 This file stores a second authoritative writing exemplar for `writing-master`.
 
 It is co-equal with `references/style-samples.md`, and the English was revised by the same editor as the preface exemplar.

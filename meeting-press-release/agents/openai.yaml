@@ -1,4 +1,0 @@
-interface:
-  display_name: "Meeting Press Release"
-  short_description: "Draft Chinese meeting news releases from agendas and handbooks"
-  default_prompt: "Use $meeting-press-release to turn my meeting agenda, handbook, participant list, post-event facts, or weak draft into a Chinese meeting news release with a fact gap check, outline, and final draft package."

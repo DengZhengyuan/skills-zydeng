@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Action Board"
+  short_description: "基于 Purple Sys 证据审阅并更新行动面板"
+  default_prompt: "使用 $purple-action-board 先审阅候选，再按当前 contracts 更新本次明确要求的行动面板。"

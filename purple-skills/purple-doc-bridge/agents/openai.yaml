@@ -1,0 +1,4 @@
+interface:
+  display_name: "Purple Doc Bridge"
+  short_description: "在 Purple Sys Markdown 与 Word DOCX 间安全转换"
+  default_prompt: "使用 $purple-doc-bridge 把这份 Purple Sys note 安全导出为 DOCX，或把 DOCX 按当前模板导入 03 Material。"

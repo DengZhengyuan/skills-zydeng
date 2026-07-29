@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibVault Reference Card"
+  short_description: "生成、更新和校验 LibVault RC metadata 主表"
+  default_prompt: "使用 $lib-rc 按当前 RC contract 生成、更新或校验这个 LibVault document 的 Reference Card。"

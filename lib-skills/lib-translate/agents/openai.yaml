@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibVault 双语正文"
+  short_description: "为 LibVault paper 逐段插入中文译文"
+  default_prompt: "使用 $lib-translate 为这篇已入库 paper 的主 Markdown 逐段插入中文译文，并保留英文、公式、表格、图片和 references。"

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Purple Doc Bridge"
-  short_description: "Convert Purple Sys notes to Word and import DOCX into Material"
-  default_prompt: "Use $purple-doc-bridge to export Purple Sys Markdown notes to templated Word DOCX files, or to extract a DOCX and write it into Purple Sys 03 Material with confirmed frontmatter and placement."

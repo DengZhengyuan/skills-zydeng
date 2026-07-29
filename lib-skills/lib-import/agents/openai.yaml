@@ -1,0 +1,4 @@
+interface:
+  display_name: "LibVault Import"
+  short_description: "把 PDF 或 MinerU 资料规范入库 LibVault"
+  default_prompt: "使用 $lib-import 把这份 PDF、MinerU 输出或已有 Markdown 规范入库当前 LibVault，并完成 RC、链接和日志验证。"
